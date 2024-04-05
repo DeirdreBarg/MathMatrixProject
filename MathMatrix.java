@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 // MathMatrix.java - CS314 Assignment 2
 
@@ -190,13 +191,13 @@ public class MathMatrix {
      * values in the result multiplied by factor.
      */
     public MathMatrix getScaledMatrix(int factor) {
-        MathMatrix result = new MathMatrix(data.getNumRows, data.getNumColumns, 0);
-        for (int row = 0; row < data.length; row++) {
-            for (int col = 0; col < data[row].length; col++) {
-                result.data[row][col] = data[row][col] * factor;
-            }
-        }
-        return result;
+        // MathMatrix result = new MathMatrix(data.getNumRows, data.getNumColumns, 0);
+        // for (int row = 0; row < data.length; row++) {
+        //     for (int col = 0; col < data[row].length; col++) {
+        //         result.data[row][col] = data[row][col] * factor;
+        //     }
+        // }
+        return null;
     }
 
 
@@ -333,6 +334,17 @@ public class MathMatrix {
             row++;
         }
         return isRectangular;
+    }
+
+
+    public static long experimentOne(){
+        Random randomNumGen = new Random();
+        MathMatrix sample1 = createMat(randomNumGen, 1000, 1000, 5);
+        MathMatrix sample2 = createMat(randomNumGen, 1000, 1000, 5);
+        Stopwatch s = new Stopwatch();
+        s.start();
+        sample1.add(sample2);
+        s.stop();
     }
 
 }

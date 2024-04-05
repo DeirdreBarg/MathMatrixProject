@@ -245,6 +245,21 @@ public class MathMatrixTester {
                     + " and must be at least 1 by 1");
         }
         return MathMatrix.rectangularMatrix(mat);
+
+    public static long experimentOne(){
+        Random randomNumGen = new Random();
+        MathMatrix sample1 = createMat(randomNumGen, 1000, 1000, 5);
+        MathMatrix sample2 = createMat(randomNumGen, 1000, 1000, 5);
+        Stopwatch s = new Stopwatch();
+        s.start();
+        sample1.add(sample2);
+        s.stop();
     }
+
+
+
+    }
+
+    
 }
 
