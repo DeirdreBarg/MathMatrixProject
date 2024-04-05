@@ -246,15 +246,37 @@ public class MathMatrix {
      * Spacing based on longest element in this Matrix.
      */
     public String toString() {
-        String result = "| ";
+        
+        StringBuilder result = new StringBuilder();
+        int max = 0;
+        String temp = "";
+
         for (int row = 0; row < data.length; row++) {
             for (int col = 0; col < data[row].length; col++) {
-                result += data[row][col] + " ";
-            }
-            result += "|\n";
+                temp = "" + data[row][col];
+                if(temp.length() > max) {
+                    max = temp.length();
+                }
+            }    
         }
-    
-        return result + "|\n";
+        for (int row = 0; row < data.length; row++) {
+            result.append("| ");
+            for (int col = 0; col < data[row].length; col++) {
+                temp = "" + data[row][col];
+                int spaces = max - temp.length();
+                for (int i = 0; i < spaces; i++) {
+                    result.append(" ");
+                }
+                result.append(temp);
+                if (col != data[row].length -1) {
+                    result.append(" ");         
+                }
+            }
+            result.append("|\n");    
+            
+        } 
+        String resultString = result.toString();
+        return resultString;
     }
 
 
@@ -268,7 +290,15 @@ public class MathMatrix {
      * <tt>false</tt> otherwise.
      */
     public boolean isUpperTriangular(){
-        return false;
+
+        for (int row = 1; row < data.length; row++) {
+            for (int col = 0; col < row; col++) {
+                if(data[row][col] != 0){
+                    return false;
+                }
+            }        
+        }
+        return true;
     }
 
     /**
